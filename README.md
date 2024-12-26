@@ -3,7 +3,7 @@
 # <p align=center><code>Extension/Devtools code execution</code></p> 
 ## How to use
 ```sh
-$ git clone https://github.com/fwsmasher/rigtools 
+$ git clone https://github.com/T3M1N4L/rigtools-updated-ui 
 $ cd rigtools
 $ npm i
 # Create a file named `server_config.json`
