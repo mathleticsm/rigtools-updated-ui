@@ -653,8 +653,7 @@ class DefaultExtensionCapabilities {
           <button id="chii">Chii</button>
           <button id="adblock">Adblock</button>
           <button id="edpuzzle">Edpuzzle hax</button>
-          <button id="invidious">Fix Invidious (Invidirect)</button>
-		  </whitebuttons>
+		</whitebuttons>
         </div>
       </div>
       <div id="other-buttons">
@@ -679,7 +678,7 @@ class DefaultExtensionCapabilities {
       <button id="tabreload">Refresh Tabs</button>
       <ul>
       </ul>
-      <input id="TabURLInput" /> <button id="TabURLSubmit">Create</button>
+      <input id="TabURLInput"/> <button id="TabURLSubmit">Create</button>
     </div>
   </div>
   `;
@@ -1031,7 +1030,33 @@ const htmlStyle = `
         margin: 0;
         padding: 20px;
       }
-      body::-webkit-scrollbar {
+    .background-grid {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: radial-gradient(#333 1px, transparent 1px);
+        background-size: 2rem 2rem;
+        z-index: -1;
+        animation: moveGrid 4s linear infinite;
+        transition: background-position-x 400ms;
+      }
+
+      @keyframes moveGrid {
+        0% {
+          background-position: 0 0;
+        }
+
+        100% {
+          background-position: 2rem 2rem;
+        }
+      }
+
+      .background-grid:hover {
+        background-position-x: 2rem;
+      }
+      body::-webkit-scrollbar, dialog::-webkit-scrollbar, dialog div::-webkit-scrollbar {
         display: none;
       }
       p {
@@ -1047,7 +1072,7 @@ const htmlStyle = `
       }
       .description {
         margin-bottom: 20px;
-        color: #9aa0a6;
+        color: #333;
       }
       .extension-disabler {
         display: flex;
@@ -1166,6 +1191,7 @@ input:checked + .slider:before {
       .tablist-item {
         border: 1px solid #333;
         margin-bottom: 10px;
+        background-color:#000;
         padding: 15px;
         border-radius: 8px;
         display: flex;
@@ -1289,6 +1315,7 @@ input:hover {
      #code-run {
   align-self: flex-start;
   background-color: #fff; 
+  border:none;
   color: black;
   cursor: pointer;
   border-radius: 5px;
@@ -1299,6 +1326,7 @@ input:hover {
 
 #code-run:hover {
   background-color: #e2e2e2; 
+  border:none;
 }
 
 #code {
@@ -1349,7 +1377,7 @@ border-color:#fff;
         opacity: 0;
         transition: all 0.5s allow-discrete;
         font-weight: bold;
-        background: #1d1d1d;
+        background:#0a0a0a;
         color: white;
         border: 1px solid #444;
         white-space: pre-wrap;
@@ -1365,8 +1393,13 @@ border-color:#fff;
         border: 1px solid #2d2d2d;
         transform: scale(0.95);
         background: #000;
+        background-image: radial-gradient(#333 1px, transparent 1px);
+        background-size: 2rem 2rem;
+        z-index: -1;
+        animation: moveGrid 4s linear infinite;
+        transition: background-position-x 400ms;
         border-radius: 10px;
-        transition: overlay 0.7s allow-discrete, display 0.7s allow-discrete, opacity 0.7s allow-discrete, transform 0.5s allow-discrete;
+        transition: overlay 0.5s allow-discrete, display 0.5s allow-discrete, opacity 0.5s allow-discrete, transform 0.5s allow-discrete;
         min-width: 50vw;
         min-height: 60vh;
         max-width: 50vw;
@@ -1402,6 +1435,8 @@ border-color:#fff;
         font-family: 'Geist', sans-serif;
         white-space: pre-wrap;
         padding: none;
+        background-color:#000;
+
       }
       dialog p {
         margin-bottom: 9px;
@@ -1490,7 +1525,7 @@ whitebuttons button:hover {
   background-color: #e2e2e2;
 }
 litstuff{
-color:#333;
+color:#444;
 font-family: monospace, sans-serif;
 font-size:12px;
 font-weight: normal;
@@ -1670,6 +1705,7 @@ onload = async function x() {
         "beforeend",
         `
       <title>Untitled Document</title>
+      <div class="background-grid"></div>
       <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/T3M1N4L/rigtools-updated-ui/refs/heads/main/docs.ico">
       `
     );
@@ -1851,15 +1887,7 @@ onload = async function x() {
       }
     });
   `;
-        scripts.invidious = `
-    fetch("https://raw.githubusercontent.com/T3M1N4L/rigtools-updated-ui/refs/heads/main/scripts/invidirect.js").then(r => r.text()).then(r => {
-      eval(r);
-    });
-  `;
         conditions.edpuzzle = (tab) => tab.url.match(/edpuzzle\.com\/assignments/g);
-        conditions.invidious = (tab) =>
-            tab.url.match(/^(?:https?:\/\/)(?:inv|invidious)\.[^\/]+\/.*watch\?v=/);
-
         const ToggleButtons = TabButtons.querySelector("#toggleable-buttons");
 
         ToggleButtons.querySelectorAll("button").forEach(
