@@ -90,7 +90,7 @@
   }
   
   button:hover, select:hover {
-    background-color: var(--background);
+    background-color: rgba(var(--background), 0.8);
   }
   
   button:disabled {

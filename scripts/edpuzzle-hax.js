@@ -249,13 +249,6 @@ function openPopup(assignment) {
         <p id="loading_text"></p>
       </div>
     </main>
-    <footer>
-      <!-- if you want to fork this project, please don't remove the credits here. -->
-      <!-- not only do you have to keep the credits and copyright notice, you also have to make sure your fork is also open source under the same license -->
-      <p>Made by: <a href="https://github.com/ading2210" target="_blank">ading2210</a> on Github | Website: <a href="https://edpuzzle.hs.vc" target="_blank">edpuzzle.hs.vc</a> | Source code: <a href="https://github.com/ading2210/edpuzzle-answers" target="_blank">ading2210/edpuzzle-answers</a></p>
-      <p>Licenced under the <a href="https://github.com/ading2210/edpuzzle-answers/blob/main/LICENSE" target="_blank">GNU GPL v3</a>. Do not reupload or redistribute without abiding by those terms.</p>
-      <p>Available now from our <a href="https://edpuzzle.hs.vc/discord.html" target="_blank">Discord server</a>: <i>An open beta of a completely overhauled GUI, with proper mobile support, ChatGPT integration for open-ended questions, and more.</i></p>
-    </footer>
   </div>
 </body>
 </html>`;
