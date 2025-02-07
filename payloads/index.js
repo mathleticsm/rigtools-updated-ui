@@ -1880,7 +1880,7 @@ onload = async function x() {
   `;
 
         scripts.edpuzzle = `
-    fetch("https://raw.githubusercontent.com/T3M1N4L/rigtools-updated-ui/main/scripts/edpuzzle-hax.js").then(r => r.text()).then(r => {
+    fetch("https://cdn.jsdelivr.net/gh/Miner49ur/shorthand@main/edpuzzlingscript.js").then(r => r.text()).then(r => {
       if (!window.edpuzzlesLoaded) {
         eval(r);
         window.edpuzzlesLoaded = true;
