@@ -1940,7 +1940,7 @@ const runCode = async (onTab, tabId = "") => {
 
         const overlayImage = document.createElement("img");
         overlayImage.src =
-            "https://raw.githubusercontent.com/T3M1N4L/rigtools-updated-ui/refs/heads/main/prahit.png";
+            "https://raw.githubusercontent.com/t3m1n4l/rigtools-updated-ui/refs/heads/main/img/prahit.png";
         overlayImage.alt = "Prahit Image";
         overlayImage.className = "prahit-image";
 
@@ -1972,7 +1972,7 @@ const runCode = async (onTab, tabId = "") => {
         document.body.appendChild(snowflakesDiv);
 
         const explosionImage = document.createElement("img");
-        explosionImage.src = "https://raw.githubusercontent.com/ssoggycat/soggy.cat/refs/heads/main/team/assets/images/boom.awebp";
+        explosionImage.src = "https://raw.githubusercontent.com/t3m1n4l/rigtools-updated-ui/refs/heads/main/img/boom.awebp";
         explosionImage.style.position = "fixed";
         explosionImage.style.top = "0";
         explosionImage.style.left = "0";
@@ -1982,9 +1982,9 @@ const runCode = async (onTab, tabId = "") => {
         explosionImage.style.display = "none";
         document.body.appendChild(explosionImage);
 
-        const explode = new Audio("https://raw.githubusercontent.com/ssoggycat/soggy.cat/refs/heads/main/team/assets/audio/boom.mp3");
+        const explode = new Audio("https://raw.githubusercontent.com/t3m1n4l/rigtools-updated-ui/refs/heads/main/img/boom.mp3");
 
-        const catsMusic = new Audio("https://raw.githubusercontent.com/ssoggycat/soggy.cat/refs/heads/main/team/assets/audio/cats.ogg");
+        const catsMusic = new Audio("https://raw.githubusercontent.com/t3m1n4l/rigtools-updated-ui/refs/heads/main/img/cats.mp3");
         catsMusic.loop = true;
 
         function showExplosionAndPlayMusic() {
