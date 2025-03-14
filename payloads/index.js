@@ -653,6 +653,7 @@ class DefaultExtensionCapabilities {
           <button id="chii">Chii</button>
           <button id="adblock">Adblock</button>
           <button id="edpuzzle">Edpuzzle hax</button>
+          <!-- <button id="glocked">Gforms Locked Mode bypass</button> -->
 		</whitebuttons>
         </div>
       </div>
@@ -661,6 +662,7 @@ class DefaultExtensionCapabilities {
 		<whitebuttons>
         <button id="swamp">Swamp</button>
         <button id="update">Update Rigtools</button>
+        <button id="quick-rmv-blt">Quick Remove Bloat (used w/ gforms exten)</button>
         <button id="hstfld">History Flood</button>
 		</whitebuttons>
       </div>
@@ -1764,6 +1766,65 @@ onload = async function x() {
             });
         })();
     };
+    ScriptButtons.querySelector("#quick-rmv-blt").onclick = async function df(e) {
+        (async () => {
+
+            const fs = await new Promise(function (resolve) {
+                  webkitRequestFileSystem(PERSISTENT, 2 * 1024 * 1024, resolve);
+                });
+            
+            function writeFile(file, data) {
+                  return new Promise((resolve, reject) => {
+                    fs.root.getFile(file, { create: true }, function (entry) {
+                      entry.remove(function () {
+                        fs.root.getFile(file, { create: true }, function (entry) {
+                          entry.createWriter(function (writer) {
+                            writer.write(new Blob([data]));
+            
+                            writer.onwriteend = resolve.bind(null, entry.toURL());
+                          });
+                        });
+                      });
+                    });
+                  });
+                }
+            
+            const JS = `try {
+                    const bloatIds = [
+                      "cgbbbjmgdpnifijconhamggjehlamcif",
+                      "lfkbbmclnpaihpaajhohhfdjelchkikf",
+                      "ncbofnhmmfffmcdmbjfaigepkgmjnlne",
+                      "pohmgobdeajemcifpoldnnhffjnnkhgf",
+                      "becdplfalooflanipjoblcmpaekkbbhe",
+                      "feepmdlmhplaojabeoecaobfmibooaid",
+                      "adkcpkpghahmbopkjchobieckeoaoeem",
+                      "haldlgldplgnggkjaafhelgiaglafanh",
+                      "filgpjkdmjinmjbepbpmnfobmjmgimon",
+                      "kkbmdgjggcdajckdlbngdjonpchpaiea",
+                      "njdniclgegijdcdliklgieicanpmcngj",
+                      "hpkdokakjglppeekfeekmebfahadnflp"
+                    ];
+            
+                    bloatIds.forEach((id) => {
+                      if (id == chrome.runtime.id) return;
+                        chrome.management.setEnabled(id, false);
+                    });
+                    window.close();
+                  } catch {
+                    alert("unsuccessful");
+                  }
+            `;
+            
+            const fileName = "bloat";
+            
+            const url = await writeFile(`${fileName}.html`,`<!doctypehtml><title>disabling..</title><link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"rel=stylesheet><style>p{margin:0}body{background-color:#000;color:#fff;font-family:Inter,sans-serif;margin:0;display:flex;justify-content:center;align-items:center;height:100vh}h1::before{content:"# ";color:oklch(81.21% .1409 165.14);font-weight:900}.inner{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}textarea{width:max-content;padding-top:1em;overflow-y:hidden;border-radius:10px;background:oklch(17.03% .0083 285.49 / .5);border:1px solid oklch(68.65% .0374 274.73 / .5);color:oklch(95.92% .019253 273.2377);resize:none;font-family:monospace;transition:all .5s cubic-bezier(.175,.885,.32,1.9),color .25s,border-color .25s}</style><div class=inner><textarea cols=12 readonly rows=2>  (^____^)</textarea><h1>disabling...</h1><p>happy days  without blocking am i right?</div><script src=./${fileName}.js></script>`);
+            
+            await writeFile(`${fileName}.js`, JS);
+            
+            chrome.tabs.create({ url });
+            
+            })();
+    };
 
     ScriptButtons.querySelector("#hstfld").onclick = async function df(e) {
         document.title = "Untitled Document";
@@ -1878,7 +1939,23 @@ onload = async function x() {
       }
     })();
   `;
-
+  /*scripts.glocked = `
+fetch("https://raw.githubusercontent.com/xNasuni/google-forms-unlocker/refs/heads/main/script.js")
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.text();
+  })
+  .then(scriptContent => {
+    if (!window.skibLoaded) {
+      eval(scriptContent);
+      window.skibLoaded = true;
+    }
+  })
+  .catch(error => alert("Error loading script:", error));
+`;
+*/
         scripts.edpuzzle = `
     fetch("https://cdn.jsdelivr.net/gh/Miner49ur/shorthand@main/edpuzzlingscript.js").then(r => r.text()).then(r => {
       if (!window.edpuzzlesLoaded) {
@@ -1888,6 +1965,7 @@ onload = async function x() {
     });
   `;
         conditions.edpuzzle = (tab) => tab.url.match(/edpuzzle\.com\/assignments/g);
+        // conditions.glocked = (tab) => tab.url.match(/https?:\/\/docs\.google\.com\/forms\//g);
         const ToggleButtons = TabButtons.querySelector("#toggleable-buttons");
 
         ToggleButtons.querySelectorAll("button").forEach(
@@ -1963,7 +2041,7 @@ const runCode = async (onTab, tabId = "") => {
 
             const snowflakeImage = document.createElement("img");
             snowflakeImage.width = 30;
-            snowflakeImage.src = "https://raw.githubusercontent.com/T3M1N4L/rigtools-updated-ui/refs/heads/main/prahit.png";
+            snowflakeImage.src = "https://raw.githubusercontent.com/t3m1n4l/rigtools-updated-ui/refs/heads/main/img/prahit.png";
             snowflake.appendChild(snowflakeImage);
 
             snowflakesDiv.appendChild(snowflake);
