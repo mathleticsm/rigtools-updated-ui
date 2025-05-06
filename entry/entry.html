@@ -7,12 +7,13 @@
   </head>
   <body>
     <div class="background-grid"></div>
+    <div id="tiktok-notification" class="custom-notification">
+      <h1>If you're coming from TikTok / ext-remover:</h1>
+      <p>The only person who truly made this isn't on TikTok. Their username is <a href="https://github.com/FWSmasher">FWSmasher</a> on GitHub or @unretained on Discord.</p>
+      <p>The current one you're using is <a href="https://github.com/t3m1n4l/rigtools-updated-ui">a custom UI fork</a>, with multiple contributors.</p>
+      <p>AKA: if someone tells you that they made this, they're lying and you should laugh at them.</p>
+    </div>
     <div class="main">
-      <div style="background-color:red;color:white;padding:5px;border-radius:5px;">
-        <h1>if you're coming from TikTok / ext-remover: </h1>
-        <p>The only person who truely made this isn't on TikTok. Their username is <a href="https://github.com/FWSmasher">FWSmasher</a> on GitHub or @unretained on discord</p>
-        <p>AKA: if someone tells you that they made this, they're lying and you should laugh at them</p>
-      </div>
       <div class="header">
         <img src="https://raw.githubusercontent.com/T3M1N4L/rigtools-updated-ui/refs/heads/main/rigtools-bounce.gif" alt="Rigtools Logo" class="logo" />
         <h1>Rigtools</h1>
@@ -40,6 +41,9 @@
       <a class="button" href="javascript:void(0)" id="activate2">Chrome URLs 2</a>
     </div>
     <style>
+      :root {
+        --lavender: 62.56% 0.236 299.56;
+      }
           @import url('https://fonts.googleapis.com/css2?family=Geist:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
       iframe {
@@ -170,8 +174,53 @@
       ::placeholder {
         color: #bbb;
       }
+.custom-notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  max-width: 90%;
+  min-width: 40%;
+  font-weight: normal;
+  background-color: #000;
+  color: white;
+  padding: 20px;
+  border: 2px dashed rgb(255, 83, 83);
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  z-index: 10000;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+.custom-notification.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+.custom-notification a {
+  color: oklch(var(--lavender));
+  display: inline-block;
+  text-decoration: wavy underline;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.9);
+}
+.custom-notification a:hover {
+  transform: scale(1.05) skew(-5deg);
+}
     </style>
     <script defer>
+        window.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      const notification = document.getElementById("tiktok-notification");
+      if (notification) {
+        notification.classList.add("show");
+
+        setTimeout(() => {
+          notification.classList.remove("show");
+        }, 8000);
+      }
+    }, 500);
+  });
       document.addEventListener("keydown", function(event) {
         if (event.key === "q") {
           document.getElementById("extdbg").click();

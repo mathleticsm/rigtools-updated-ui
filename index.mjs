@@ -20,6 +20,7 @@ const WhalePage = `
 @import url('https://fonts.xz.style/serve/inter.css');
 
 :root {
+  --lavender: 62.56% 0.236 299.56;
 	--nc-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	--nc-font-mono: Consolas, monaco, 'Ubuntu Mono', 'Liberation Mono', 'Courier New', Courier, monospace;
 	--nc-tx-1: #ffffff;
@@ -147,13 +148,6 @@ h6 {
 	font-size: .875rem;
 }
 
-a {
-	color: var(--nc-lk-1);
-}
-
-a:hover {
-	color: var(--nc-lk-2);
-}
 
 abbr:hover {
 	/* Set the '?' cursor while hovering an abbreviation */
@@ -448,15 +442,65 @@ input[type]:focus {
 img {
 	max-width: 100%;
 }
+.custom-notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  max-width: 90%;
+  background-color: #000;
+  color: white;
+  padding: 20px;
+  border: 2px dashed rgb(255, 83, 83);
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  z-index: 10000;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+.custom-notification.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+a {
+  color: oklch(var(--lavender));
+  display: inline-block;
+  text-decoration: wavy underline;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.9);
+}
+a:hover {
+  transform: scale(1.05) skew(-5deg);
+}
 </style>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      const notification = document.getElementById("tiktok-notification");
+      if (notification) {
+        notification.classList.add("show");
+
+        setTimeout(() => {
+          notification.classList.remove("show");
+        }, 8000);
+      }
+    }, 500);
+  });
+</script>
+
 </head>
 
 <body>
-<div style="background-color:red;color:white;padding:5px;border-radius:5px;">
-    <h1>if you're coming from TikTok / ext-remover: </h1>
-    <p>The only person who truely made this isn't on TikTok. Their username is <a href="https://github.com/FWSmasher">FWSmasher</a> on GitHub or @unretained on discord</p>
-    <p>AKA: if someone tells you that they made this, they're lying and you should laugh at them</p>
+<div id="tiktok-notification" class="custom-notification">
+  <h1>If you're coming from TikTok / ext-remover:</h1>
+  <p>The only person who truly made this isn't on TikTok. Their username is <a href="https://github.com/FWSmasher">FWSmasher</a> on GitHub or @unretained on Discord.</p>
+  <p>The current one you're using is <a href="https://github.com/t3m1n4l/rigtools-updated-ui">a custom UI fork</a>, with multiple contributors.</p>
+  <p>AKA: if someone tells you that they made this, they're lying and you should laugh at them.</p>
 </div>
+
 <div style="text-align: center;">
     <div style="display: flex; justify-content: center; align-items: flex-start;">
     <img src="https://raw.githubusercontent.com/T3M1N4L/rigtools-updated-ui/refs/heads/main/rigtools-bounce.gif" height="170vh" style="margin-right: 10px;" />
