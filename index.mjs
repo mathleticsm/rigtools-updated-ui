@@ -452,7 +452,11 @@ img {
 </head>
 
 <body>
-
+<div style="background-color:red;color:white;padding:5px;border-radius:5px;">
+    <h1>if you're coming from TikTok / ext-remover: </h1>
+    <p>The only person who truely made this isn't on TikTok. Their username is <a href="https://github.com/FWSmasher">FWSmasher</a> on GitHub or @unretained on discord</p>
+    <p>AKA: if someone tells you that they made this, they're lying and you should laugh at them</p>
+</div>
 <div style="text-align: center;">
     <div style="display: flex; justify-content: center; align-items: flex-start;">
     <img src="https://raw.githubusercontent.com/T3M1N4L/rigtools-updated-ui/refs/heads/main/rigtools-bounce.gif" height="170vh" style="margin-right: 10px;" />
