@@ -5,6 +5,7 @@
   "main": "index.mjs",
   "scripts": {
     "start": "node index.mjs",
+    "har-build": "node har.js",
     "build": "npm install && node index.mjs",
     "kill": "lsof -t -i :8080 | xargs kill -9"
   },
