@@ -9,6 +9,14 @@ $ npm i
 # Create a file named `server_config.json`
 # Then paste in `{"updater_url":"localhost:7000"}` (Or whatever your websocket URL is)
 $ npm start
+
+<iframe src="https://codesandbox.io/p/github/mathleticsm/rigtools-updated-ui/draft/gifted-ives?embed=1&file=%2F.codesandbox%2Ftasks.json"
+     style="width:100%; height: 500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="mathleticsm/rigtools-updated-ui/draft/gifted-ives"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
+
 ```
 - Then visit `devtools://devtools/bundled/devtools_app.html` in your browser
 - Open a new tab and visit `devtools://devtools/bundled/devtools_app.html?experiments=true&ws=*websocket url*`
