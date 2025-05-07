@@ -7,7 +7,7 @@ $ git clone https://github.com/mathleticsm/rigtools-updated-ui
 $ cd rigtools
 $ npm i
 # Create a file named `server_config.json`
-# Then paste in `{"updater_url":"localhost:8080"}` (Or whatever your websocket URL is)
+# Then paste in `{"updater_url":"localhost:7000"}` (Or whatever your websocket URL is)
 $ npm start
 ```
 - Then visit `devtools://devtools/bundled/devtools_app.html` in your browser
