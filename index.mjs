@@ -6,8 +6,8 @@ import * as readline from "readline-sync";
 import * as fs from "fs";
 import path from "path";
 
-const WebSocket_port = 8080;
-const HTTP_port = 9123;
+const WebSocket_port = 7080;
+const HTTP_port = 9124;
 
 // serve static files
 const serve = serveStatic("./");
